@@ -1,0 +1,77 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  // output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum RequestStatusEnum {
+  PENDING
+  APPROVED
+  FINISHED
+  CANCELED
+}
+
+model user {
+  id          String        @id @default(uuid())
+  name        String
+  email       String
+  password    String
+  donator     donator[]
+  beneficiary beneficiary[]
+
+  @@unique([email])
+}
+
+model donator {
+  id        String     @id @default(uuid())
+  name      String
+  email     String
+  phone     String
+  user      user       @relation(fields: [createdBy], references: [id], onDelete: Cascade)
+  createdBy String     @map("created_by")
+  donation  donation[]
+
+  @@unique([email])
+}
+
+model donation {
+  id          String    @id @default(uuid())
+  description String
+  expiryAt    DateTime  @map("expiry_at")
+  location    String
+  donator     donator   @relation(fields: [donatorId], references: [id], onDelete: Cascade)
+  donatorId   String    @map("donator_id")
+  request     request[]
+}
+
+model beneficiary {
+  id          String    @id @default(uuid())
+  name        String
+  email       String
+  location    String
+  necessities String
+  user        user      @relation(fields: [createdBy], references: [id], onDelete: Cascade)
+  createdBy   String    @map("created_by")
+  request     request[]
+
+  @@unique([email])
+}
+
+model request {
+  id            String            @id @default(uuid())
+  beneficiary   beneficiary       @relation(fields: [beneficiaryId], references: [id], onDelete: Cascade)
+  beneficiaryId String            @map("beneficiary_id")
+  donation      donation          @relation(fields: [donationId], references: [id], onDelete: Cascade)
+  donationId    String            @map("donation_id")
+  status        RequestStatusEnum @default(PENDING)
+}
