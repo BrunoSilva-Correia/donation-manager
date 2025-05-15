@@ -5,7 +5,8 @@ export abstract class DonationRepository
   implements IRepository<DonationEntity>
 {
   abstract findById(id: string): Promise<DonationEntity | null>;
-  abstract findAll(): Promise<DonationEntity[]>;
+  abstract findAll(): Promise<DonationEntity[] | null>;
+  abstract findByLocation(location: string): Promise<DonationEntity[] | null>;
   abstract create(data: DonationEntity): Promise<DonationEntity>;
   abstract update(id: string, data: DonationEntity): Promise<DonationEntity>;
   abstract delete(id: string): Promise<void>;

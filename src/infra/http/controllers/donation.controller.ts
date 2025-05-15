@@ -34,6 +34,16 @@ export class DonationController {
     return DonationMapper.toHttp(donation);
   }
 
+  @Get('/location/:location')
+  @HttpCode(HttpStatus.OK)
+  async findByLocation(@Param('location') location: string) {
+    const beneficiary = await this.service.findByLocation(location);
+    if (!beneficiary?.length) {
+      return [];
+    }
+    return beneficiary.map(DonationMapper.toHttp);
+  }
+
   @Get()
   @HttpCode(HttpStatus.OK)
   async findAll() {
