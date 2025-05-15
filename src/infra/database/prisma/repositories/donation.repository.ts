@@ -21,4 +21,14 @@ export class PrismaDonationRepository
   constructor(protected readonly prisma: PrismaService) {
     super(prisma);
   }
+
+  async findByLocation(location: string): Promise<DonationEntity[]> {
+    const data = await this.model.findMany({
+      where: {
+        location: location,
+      },
+    });
+
+    return data.length ? data.map(this.mapper.toDomain) : null;
+  }
 }

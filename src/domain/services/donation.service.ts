@@ -26,6 +26,10 @@ export class DonationService extends BaseCrudService<DonationEntity> {
     return await super.update(id, data);
   }
 
+  async findByLocation(location: string) {
+    return await this.repository.findByLocation(location);
+  }
+
   protected async validateDonatorId(donatorId: string): Promise<void> {
     await this.donatorService.findById(donatorId);
   }
