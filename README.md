@@ -1,73 +1,105 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# Donation Manager
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+**Donation Manager** is a backend application built with [NestJS](https://nestjs.com/) and TypeScript, designed to manage donations efficiently and scalably. It also includes built-in API documentation using Swagger.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+## 🚀 Technologies Used
 
-## Description
+- [NestJS](https://nestjs.com/): A progressive Node.js framework for building scalable server-side applications.
+- [TypeScript](https://www.typescriptlang.org/): A statically typed superset of JavaScript.
+- [Prisma](https://www.prisma.io/): A next-generation ORM for Node.js and TypeScript.
+- [Yarn](https://yarnpkg.com/): A fast, reliable, and secure dependency manager.
+- [Swagger](https://swagger.io/): For API documentation and testing.
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+## 📦 Installation
 
-## Installation
+1. Clone the repository:
 
-```bash
-$ yarn install
+   ```bash
+   git clone https://github.com/BrunoSilva-Correia/donation-manager.git
+   ```
+
+2. Navigate to the project directory:
+
+   ```bash
+   cd donation-manager
+   ```
+
+3. Install dependencies:
+
+   ```bash
+   yarn install
+   ```
+
+## ⚙️ Environment Variables
+
+Create a `.env` file in the root of the project with the following variables:
+
+```env
+PORT=3000
+DATABASE_URL=postgresql://user:password@localhost:5432/database_name
+JWT_SECRET_TOKEN=your_secret_key
 ```
 
-## Running the app
+> Make sure to replace the values with your own database credentials and a secure JWT secret.
 
-```bash
-# development
-$ yarn run start
+## 🏃 Running the Application
 
-# watch mode
-$ yarn run start:dev
+- Development mode:
 
-# production mode
-$ yarn run start:prod
+  ```bash
+  yarn start
+  ```
+
+- Watch mode (auto-restart on changes):
+
+  ```bash
+  yarn start:dev
+  ```
+
+- Production mode:
+
+  ```bash
+  yarn start:prod
+  ```
+
+Once the server is running, Swagger API documentation will be available at:
+
+```
+{{host}}/docs
 ```
 
-## Test
+<!-- ## 🧪 Running Tests
 
-```bash
-# unit tests
-$ yarn run test
+- Run all tests:
 
-# e2e tests
-$ yarn run test:e2e
+  ```bash
+  yarn test
+  ```
 
-# test coverage
-$ yarn run test:cov
+- Run tests with coverage:
+
+  ```bash
+  yarn test:cov
+  ``` -->
+
+## 📁 Project Structure
+
+```
+donation-manager/
+|
+├── prisma/             # Prisma schema and migrations
+├── src/                # Application source code
+├── test/               # Unit and integration tests
+├── .eslintrc.js        # ESLint configuration
+├── .gitignore          # Files and folders ignored by Git
+├── .prettierrc         # Prettier code formatting configuration
+├── nest-cli.json       # Nest CLI configuration
+├── package.json        # Project metadata and scripts
+├── tsconfig.build.json # TypeScript build configuration
+├── tsconfig.json       # Main TypeScript configuration
+└── yarn.lock           # Exact dependency versions
 ```
 
-## Support
+<!-- ## 📄 License
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
+This project is licensed under the [MIT License](LICENSE). -->
