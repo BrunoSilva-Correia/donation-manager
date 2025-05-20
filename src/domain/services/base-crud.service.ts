@@ -41,7 +41,7 @@ export abstract class BaseCrudService<T> {
   }
 
   protected async validateEmail(email: string) {
-    if (!this.repository.findByEmail) return;
+    if (!this.repository.findByEmail || !email) return;
 
     const existing = await this.repository.findByEmail(email);
     if (existing) {

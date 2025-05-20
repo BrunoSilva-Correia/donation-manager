@@ -27,6 +27,7 @@ export abstract class BasePrismaRepository<
   constructor(protected readonly prisma: PrismaService) {}
 
   async findById(id: string): Promise<DomainEntity | null> {
+    console.log(id);
     const data = await this.model.findUnique({ where: { id } });
     return data ? this.mapper.toDomain(data) : null;
   }
