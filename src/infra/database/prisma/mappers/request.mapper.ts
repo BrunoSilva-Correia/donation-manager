@@ -7,7 +7,7 @@ export class RequestMapper {
     return new RequestEntity({
       beneficiaryId: request.beneficiaryId,
       donationId: request.donationId,
-      status: this.#toDomainStatus(request.status),
+      status: RequestMapper.toDomainStatus(request.status),
       id: request.id,
     });
   }
@@ -16,12 +16,12 @@ export class RequestMapper {
     return {
       beneficiaryId: request.beneficiaryId,
       donationId: request.donationId,
-      status: this.#toDatabaseStatus(request.status),
+      status: RequestMapper.toDatabaseStatus(request.status),
       id: request.id,
     };
   }
 
-  static #toDomainStatus(status: string): RequestStatus {
+  static toDomainStatus(status: string): RequestStatus {
     switch (status) {
       case 'PENDING':
         return RequestStatus.PENDING;
@@ -36,7 +36,7 @@ export class RequestMapper {
     }
   }
 
-  static #toDatabaseStatus(status: RequestStatus): RequestStatusEnum {
+  static toDatabaseStatus(status: RequestStatus): RequestStatusEnum {
     switch (status) {
       case RequestStatus.PENDING:
         return RequestStatusEnum.PENDING;
