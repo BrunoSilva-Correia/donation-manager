@@ -11,6 +11,7 @@ import {
   ParseUUIDPipe,
   Patch,
   Post,
+  Query,
   Res,
 } from '@nestjs/common';
 import { UserMapper } from '../mappers';
@@ -22,6 +23,17 @@ import { ApiBearerAuth } from '@nestjs/swagger';
 @Controller('user')
 export class UserController {
   constructor(private readonly service: UserService) {}
+
+  @Get('/by-email')
+  @HttpCode(HttpStatus.OK)
+  async findByEmail(@Query('email') email: string) {
+    if (!email) {
+      throw new BadRequestException('Email must be provided');
+    }
+
+    const user = await this.service.findByEmail(email);
+    return UserMapper.toHttp(user);
+  }
 
   @Get(':id')
   @HttpCode(HttpStatus.OK)

@@ -31,10 +31,16 @@ export class RequestService extends BaseCrudService<RequestEntity> {
   }
 
   protected async validateDonationId(donationId: string): Promise<void> {
+    if (!donationId) {
+      return;
+    }
     await this.donationService.findById(donationId);
   }
 
-  protected async validateBeneficiaryId(donationId: string): Promise<void> {
-    await this.beneficiaryService.findById(donationId);
+  protected async validateBeneficiaryId(beneficiaryId: string): Promise<void> {
+    if (!beneficiaryId) {
+      return;
+    }
+    await this.beneficiaryService.findById(beneficiaryId);
   }
 }

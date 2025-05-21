@@ -31,6 +31,9 @@ export class DonationService extends BaseCrudService<DonationEntity> {
   }
 
   protected async validateDonatorId(donatorId: string): Promise<void> {
+    if (!donatorId) {
+      return;
+    }
     await this.donatorService.findById(donatorId);
   }
 }

@@ -29,6 +29,9 @@ export class BeneficiaryService extends BaseCrudService<BeneficiaryEntity> {
   }
 
   protected async validateCreatedBy(createdBy: string): Promise<void> {
+    if (!createdBy) {
+      return;
+    }
     await this.userService.findById(createdBy);
   }
 }
